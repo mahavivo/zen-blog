@@ -11,7 +11,7 @@
     <title>vivo's blog</title>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="max-width:960px;">
       <nav class="navbar navbar-light navbar-expand-lg">
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
