@@ -48,7 +48,7 @@ def create_db():
               email CHAR(200) NOT NULL);
               """)
 
-    c.execute("INSERT INTO blog (title, content, data) VALUES ('Visit the Python website',"
+    c.execute("INSERT INTO blog (title, content, date) VALUES ('Visit the Python website',"
               "'我的bottle博客测试。', '2019-04-20 00:00:00');")
 
     conn.commit()
