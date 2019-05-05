@@ -4,10 +4,10 @@
 
 import os
 import sqlite3
-import markdown
 
 from argon2 import PasswordHasher
 import beaker.middleware
+import markdown
 
 import bottle
 from bottle import datetime, hook, install, get, post, redirect, request, route, run, static_file, template
