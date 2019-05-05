@@ -3,11 +3,11 @@
 <section class="Aligner" style="margin-top: 50px;">
 	<form method="POST" action="/admin/login">
 	  <div class="form-group">
-	    <label for="formGroupExampleInput">username</label>
+	    <label for="usernameInput">username</label>
 	    <input type="text" class="form-control" name="username" placeholder="Username" required="">
 	  </div>
 	  <div class="form-group">
-	    <label for="formGroupExampleInput2">password</label>
+	    <label for="passwordInput">password</label>
 	    <input type="password" class="form-control" name="password" placeholder="Password" required>
 	  </div>
 

@@ -4,6 +4,7 @@
 
 import os
 import sqlite3
+import markdown
 
 from argon2 import PasswordHasher
 import beaker.middleware
@@ -49,7 +50,10 @@ def create_db():
               """)
 
     c.execute("INSERT INTO blog (title, content, date) VALUES ('Visit the Python website',"
-              "'我的bottle博客测试。', '2019-04-20 00:00:00');")
+              "'寒蟬淒切，對長亭晚，驟雨初歇。都門帳飲無緒，留戀處，蘭舟催發。"
+              "執手相看淚眼，竟無語凝噎。念去去，千裏煙波，暮霭沈沈楚天闊。"
+              "多情自古傷離別，更那堪，冷落清秋節！今宵酒醒何處？楊柳岸，曉風殘月。"
+              "此去經年，應是良辰好景虛設。便縱有千種風情，更與何人說？', '2019-04-20 00:00:00');")
 
     conn.commit()
     conn.close()
@@ -65,6 +69,16 @@ if not os.path.exists('bottle.db'):
 @route('/posts')
 def index(db):
     posts = db.execute('SELECT id, title, content, date FROM blog ORDER BY id DESC').fetchall()
+    posts = [{
+        "id": post['id'],
+        "title": post['title'],
+        "content": post['content'],
+        "date": post['date']
+    } for post in posts]
+
+    for post in posts:
+        x = markdown.markdown(post['content'], extensions=['extra', 'codehilite'])
+        post['content'] = x
 
     return template('posts', posts=posts)
 
@@ -72,8 +86,10 @@ def index(db):
 @route('/post/<post_id>')
 def detail(db, post_id):
     post = db.execute('SELECT title, content, date FROM blog WHERE id = ?', (post_id,)).fetchone()
+    title, content, date = post
+    content = markdown.markdown(post['content'], extensions=['extra', 'codehilite'])
 
-    return template('post_detail', post=post)
+    return template('post_detail', title=title, content=content, date=date)
 
 
 @get('/admin/login')
@@ -169,7 +185,6 @@ def index(db, post_id):
 def index(db, post_id):
     if 'username' not in request.session:
         redirect('/admin/login')
-
     db.execute('DELETE FROM blog WHERE id=?', (post_id,))
 
     return template('admin/delete_post', post_id=post_id)
@@ -198,7 +213,6 @@ def validate_login(db, username, password):
 # create admin user in the database
 def create_user(db, username, password, email):
     password_hash = ph.hash(password)
-
     db.execute('INSERT INTO user (username, password, email) VALUES (?, ?, ?)', (username, password_hash, email))
 
     return True
@@ -215,7 +229,7 @@ def server_pic(filename):
 
 
 def main():
-    run(host='0.0.0.0', port=8888, app=app, debug=True, reloader=True)
+    run(host='0.0.0.0', port=8888, app=app, debug=True)
 
 
 if __name__ == '__main__':

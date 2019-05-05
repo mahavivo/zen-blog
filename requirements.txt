@@ -1,3 +1,4 @@
+markdown==3.1
 Beaker==1.10.1
 bottle==0.12.16
 argon2_cffi==19.1.0
