@@ -11,7 +11,6 @@
 </div>
 
 
-
 %if len(posts) < 1:
    <h3 class="text-center"> No blog post at the moment, check back later... </h3>
 %end
