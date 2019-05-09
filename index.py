@@ -93,7 +93,6 @@ def index(db):
 @route('/post/<post_id>')
 def detail(db, post_id):
     images = [x for x in os.listdir('./images') if x.endswith('jpg')]
-    print(images)
     image = random.choice(images)
     post = db.execute('SELECT title, content, date FROM blog WHERE id = ?', (post_id,)).fetchone()
     title, content, date = post
