@@ -10,6 +10,7 @@
 
     <style>
 
+
     .codehilite pre { padding: 16px }
     .codehilite .hll { background-color: #e6e3c3 }
     .codehilite  { background: #f6f8fa; color: #272822 }
@@ -86,7 +87,7 @@
 
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="/"> Home </a>
+                <a class="nav-link" href="/blog"> Home </a>
               </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -102,7 +103,7 @@
         {{!base}}
 
       </div>
-         <section class="footer text-center" style="margin-top: 34px;font-family:PingFangSC-Light,Arial,'Hiragino Sans GB';">
+         <section class="footer text-center" style="margin-top: 34px;font-size:14px;font-family:PingFangSC-Light,Arial,'Hiragino Sans GB';">
             &copy;2018 --made with bottle micro-framework
          </section>
     </div>

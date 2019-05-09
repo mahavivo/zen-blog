@@ -3,11 +3,12 @@
 
 
 import os
+import random
 import sqlite3
+import markdown
 
 from argon2 import PasswordHasher
 import beaker.middleware
-import markdown
 
 import bottle
 from bottle import datetime, hook, install, get, post, redirect, request, route, run, static_file, template
@@ -66,6 +67,12 @@ if not os.path.exists('bottle.db'):
 
 
 @route('/')
+def vivo():
+
+    return template('vivo')
+
+
+@route('/blog')
 @route('/posts')
 def index(db):
     posts = db.execute('SELECT id, title, content, date FROM blog ORDER BY id DESC').fetchall()
@@ -85,11 +92,21 @@ def index(db):
 
 @route('/post/<post_id>')
 def detail(db, post_id):
+    images = [x for x in os.listdir('./images') if x.endswith('jpg')]
+    print(images)
+    image = random.choice(images)
     post = db.execute('SELECT title, content, date FROM blog WHERE id = ?', (post_id,)).fetchone()
     title, content, date = post
     content = markdown.markdown(post['content'], extensions=['extra', 'codehilite'])
 
-    return template('post_detail', title=title, content=content, date=date)
+    return template('post_detail', image=image, title=title, content=content, date=date)
+
+
+@route('/archives')
+def index(db):
+    posts = db.execute('SELECT id, title, date FROM blog ORDER BY id DESC').fetchall()
+
+    return template('archives', posts=posts)
 
 
 @get('/admin/login')
@@ -218,9 +235,9 @@ def create_user(db, username, password, email):
     return True
 
 
-@route('/pic/<filename>')
+@route('/images/<filename>')
 def server_pic(filename):
-    return static_file(filename, root='./tmp')
+    return static_file(filename, root='./images')
 
 
 # @route('/public/<filepath:path>')

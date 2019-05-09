@@ -21,7 +21,7 @@
 %for post in posts:
     <div class="card">
       <div class="card-header">
-        <h5> {{post['title']}}</h5>
+        <h5 style="margin-bottom:0"> {{post['title']}}</h5>
       </div>
       <div class="card-body">
         <p class="card-text" style="white-space: pre-line;">{{post['content']}}</p>

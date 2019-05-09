@@ -2,18 +2,21 @@
 
 <br>
 
-<div class="jumbotron" style="background: #f8f8f8;">
+
+<div class="jumbotron" style="background: #f6f6f6;">
   <div class="container">
     <h3 class="text-center">Welcome to vivo's Blog!</h3><br>
     <p class="lead text-center">Read about the latest happening in the tech world...</p>
   </div>
 </div>
 
+
+
 %if len(posts) < 1:
    <h3 class="text-center"> No blog post at the moment, check back later... </h3>
 %end
 
-%for post in posts:
+%for post in posts[:5]:
     <div class="card border-0">
 
       <div class="card-block" style="font-family:PingFangSC,Arial,'Hiragino Sans GB';">
@@ -32,3 +35,13 @@
       </div>
     </div> <br>
 %end
+
+<br>
+<div class="card bg-light border-0" style="text-align:right; font-size:18px;">
+    <br>
+    <div class="card-text">
+    <span style="float:left;text-align:left;">READ MORE ⟿</span>
+    <a href="/archives" style="font-style: italic;">A Collection of Essays by <span style="color:blue;font-size:22px;">vivo</span></a>
+    </div>
+    <br>
+</div>

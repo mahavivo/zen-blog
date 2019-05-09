@@ -1,9 +1,9 @@
 % rebase('base.tpl', title='Page Title')
+<br>
 
 <div class="card border-0">
-
-  <img class="card-img-top" src="http://www.bing.com/th?id=OHR.SakuraFes_EN-CA2063659121_1920x1080.jpg&rf=NorthMale_1920x1080.jpg&pid=hp" alt="Card image cap">
-
+  <img class="card-img-top" src="/images/{{image}}" alt="Card image cap">
+%end
   <div class="card-block" style="font-family:PingFangSC,Arial,'Hiragino Sans GB';">
     <h4 class="card-title text-center" style="margin:30px;">{{title}}</h4>
     <p class="card-text" style="white-space: pre-line;">{{!content}}</p>
