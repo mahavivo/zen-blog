@@ -37,11 +37,11 @@
 %end
 
 <br>
-<div class="card bg-light border-0" style="text-align:right; font-size:18px;">
+<div class="card bg-light border-0" style="font-size:18px;">
     <br>
     <div class="card-text">
-    <span style="float:left;text-align:left;">READ MORE ⟿</span>
-    <a href="/archives" style="font-style: italic;">A Collection of Essays by <span style="color:blue;font-size:22px;">vivo</span></a>
+    <span style="float:left;">READ MORE ⟿</span>
+    <a href="/archives" style="float:right;font-style:italic">A Collection of Essays by <span style="color:blue;">VIVO</span></a>
     </div>
     <br>
 </div>
